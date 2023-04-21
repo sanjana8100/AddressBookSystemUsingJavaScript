@@ -197,6 +197,22 @@ class AddressBook{
         },0);
         console.log("Number of Contacts in the Address Book whose city is " +stateName+ " : " +stateCount+ "\n")
     }
+
+    //UC11
+    sortByName(){
+        let sortedList = []
+        sortedList = this.addressBook.sort((a,b) => {
+            if(a.firstName < b.firstName){
+                return -1;
+            }
+            if(a.firstName > b.firstName){
+                return 1;
+            }
+            return 0;
+        });
+        console.log("Contacts in the Address Book sorted by their first names: ")
+        console.log(sortedList.toString())
+    }
 }
 
 try{
@@ -206,7 +222,7 @@ try{
 
     //Implementing UC1 and UC2
     let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
-    let newContact1 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
+    let newContact1 =new Contact("Brundha","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
     newAddressBook.addContact(newContact)
     newAddressBook.addContact(newContact1)
 
@@ -214,17 +230,22 @@ try{
     newAddressBook.editContact("Sanjana","Srinivasa")
 
     //Implementing UC7
-    let newContact3 =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
+    let newContact3 = new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     newAddressBook.addContact(newContact3)
 
     //Implementing UC8 and UC9
     newAddressBook.searchByCity("Bengaluru")
     newAddressBook.searchByState("Karnataka")
 
-    newAddressBook.countByCity("Kolar")
+    //Implementing UC10
+    newAddressBook.countByCity("Bengaluru")
+    newAddressBook.countByState("Karnataka")
+
+    //Implementing UC11
+    newAddressBook.sortByName()
 
     //Implementing UC5
-    newAddressBook.deleteContact("Swathi")
+    newAddressBook.deleteContact("Brundha")
 
     //Implementing UC6
     newAddressBook.noOfContacts();
