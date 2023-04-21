@@ -167,10 +167,35 @@ class AddressBook{
     searchByCity(cityName){
         let cityList = []
         cityList = this.addressBook.filter(contact => contact.city == cityName);
-        
+
         //UC9
-        console.log("Contacts in the Address Book whose city is " +cityName)
+        console.log("Contacts in the Address Book whose city is " +cityName+ ": ")
         console.log(cityList.toString())
+    }
+
+    //UC8
+    searchByState(stateName){
+        let stateList = []
+        stateList = this.addressBook.filter(contact => contact.state == stateName);
+
+        //UC9
+        console.log("Contacts in the Address Book whose state is " +stateName+ ": ")
+        console.log(stateList.toString())
+    }
+
+    //UC10
+    countByCity(cityName){
+        let cityCount = this.addressBook.filter(contact => contact.city == cityName).reduce((cityCount,contact) =>{
+            return cityCount += 1
+        },0);
+        console.log("Number of Contacts in the Address Book whose city is " +cityName+ " : " +cityCount+ "\n")
+    }
+
+    countByState(stateName){
+        let stateCount = this.addressBook.filter(contact => contact.state == stateName).reduce((stateCount,contact) =>{
+            return stateCount += 1
+        },0);
+        console.log("Number of Contacts in the Address Book whose city is " +stateName+ " : " +stateCount+ "\n")
     }
 }
 
@@ -192,7 +217,11 @@ try{
     let newContact3 =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     newAddressBook.addContact(newContact3)
 
+    //Implementing UC8 and UC9
     newAddressBook.searchByCity("Bengaluru")
+    newAddressBook.searchByState("Karnataka")
+
+    newAddressBook.countByCity("Kolar")
 
     //Implementing UC5
     newAddressBook.deleteContact("Swathi")
