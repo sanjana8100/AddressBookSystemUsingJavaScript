@@ -167,6 +167,9 @@ class AddressBook{
     searchByCity(cityName){
         let cityList = []
         cityList = this.addressBook.filter(contact => contact.city == cityName);
+        
+        //UC9
+        console.log("Contacts in the Address Book whose city is " +cityName)
         console.log(cityList.toString())
     }
 }
