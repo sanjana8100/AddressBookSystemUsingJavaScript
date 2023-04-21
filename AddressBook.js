@@ -105,15 +105,21 @@ class Contact{
         return (`First Name: ${this.firstName} \nLast Name: ${this.lastName}\nAddress: ${this.address}\nCity : ${this.city}\nState : ${this.state}\nZip code : ${this.zip}\nPhone Number : ${this.phoneNumber}\nEmail ID: ${this.email}\n\n`)
     }
 }
-try{
-    //UC3
-    let addressBook =[];
+
+//UC3
+function addContact(){
     let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     let newContact2 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
     addressBook.push(newContact);
     addressBook.push(newContact2)
     console.log("Address Book after adding conatcts: ")
     console.log(addressBook.toString())
+}
+
+try{
+    //UC3
+    let addressBook =[];
+    addContact();
 
     //UC4
     let inputName = "Sanjana"
@@ -134,6 +140,13 @@ try{
     }
     console.log("Address Book after deleting the contact using first name: ")
     console.log(addressBook.toString())
+
+    //UC6
+    let noOfContacts = addressBook.reduce((noOfContacts,contact) => {
+        return noOfContacts += 1
+    },0)
+    console.log("Number of Contacts in the Address Book: " +noOfContacts)
+    
 
 } catch(e){
     console.error(e);
