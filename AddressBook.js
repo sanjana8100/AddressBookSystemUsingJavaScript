@@ -109,6 +109,16 @@ try{
     let newContact2 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
     addressBook.push(newContact);
     addressBook.push(newContact2)
+    console.log("Address Book after adding conatcts: ")
+    console.log(addressBook.toString())
+
+    let inputName = "Sanjana"
+    for(let i=0 ; i < addressBook.length ; i++){
+        if(inputName == addressBook[i]._firstName){
+            addressBook[i].lastName = "Srinivasa"
+        }
+    }
+    console.log("Address Book after editng the last name using first name: ")
     console.log(addressBook.toString())
 } catch(e){
     console.error(e);
