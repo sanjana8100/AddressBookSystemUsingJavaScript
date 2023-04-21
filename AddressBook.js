@@ -162,6 +162,13 @@ class AddressBook{
         console.log("Number of Contacts in the Address Book: " +noOfContacts)
         return noOfContacts;
     }
+
+    //UC8
+    searchByCity(cityName){
+        let cityList = []
+        cityList = this.addressBook.filter(contact => contact.city == cityName);
+        console.log(cityList.toString())
+    }
 }
 
 try{
@@ -169,23 +176,25 @@ try{
     let addressBook = [];
     let newAddressBook = new AddressBook(addressBook);
 
-    //Implementing UC1
+    //Implementing UC1 and UC2
     let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     let newContact1 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
     newAddressBook.addContact(newContact)
     newAddressBook.addContact(newContact1)
 
-    //Implementing UC2
-    let newContact2 = new Contact("tim","Steward","Church Street","Goa","Goa",562489,918564723654,"tim@gmail.com")
-    newAddressBook.addContact(newContact2)
-
+    //Implementing UC4
     newAddressBook.editContact("Sanjana","Srinivasa")
 
+    //Implementing UC7
     let newContact3 =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     newAddressBook.addContact(newContact3)
 
+    newAddressBook.searchByCity("Bengaluru")
+
+    //Implementing UC5
     newAddressBook.deleteContact("Swathi")
 
+    //Implementing UC6
     newAddressBook.noOfContacts();
 
 } catch(e){
