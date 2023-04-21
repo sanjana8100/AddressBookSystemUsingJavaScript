@@ -1,3 +1,4 @@
+//UC1
 class Contact{
 
     constructor(...params){
@@ -11,6 +12,7 @@ class Contact{
         this.email = params[7];
     }
 
+    //UC2
     get firstName(){
         return this._firstName;
     }
@@ -104,6 +106,7 @@ class Contact{
     }
 }
 try{
+    //UC3
     let addressBook =[];
     let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
     let newContact2 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
@@ -112,6 +115,7 @@ try{
     console.log("Address Book after adding conatcts: ")
     console.log(addressBook.toString())
 
+    //UC4
     let inputName = "Sanjana"
     for(let i=0 ; i < addressBook.length ; i++){
         if(inputName == addressBook[i]._firstName){
@@ -120,6 +124,17 @@ try{
     }
     console.log("Address Book after editng the last name using first name: ")
     console.log(addressBook.toString())
+
+    //UC5
+    let name = "Swathi"
+    for(let i=0 ; i < addressBook.length ; i++){
+        if(name == addressBook[i]._firstName){
+            delete addressBook[i]
+        }
+    }
+    console.log("Address Book after deleting the contact using first name: ")
+    console.log(addressBook.toString())
+
 } catch(e){
     console.error(e);
 }
