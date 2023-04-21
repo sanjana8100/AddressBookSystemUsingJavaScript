@@ -100,12 +100,16 @@ class Contact{
     }
 
     toString(){
-        return (`First Name: ${this.firstName} \nLast Name: ${this.lastName}\nAddress: ${this.address}\nCity : ${this.city}\nState : ${this.state}\nZip code : ${this.zip}\nPhone Number : ${this.phoneNumber}\nEmail ID: ${this.email}`)
+        return (`First Name: ${this.firstName} \nLast Name: ${this.lastName}\nAddress: ${this.address}\nCity : ${this.city}\nState : ${this.state}\nZip code : ${this.zip}\nPhone Number : ${this.phoneNumber}\nEmail ID: ${this.email}\n\n`)
     }
 }
 try{
+    let addressBook =[];
     let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
-    console.log(newContact.toString())
+    let newContact2 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
+    addressBook.push(newContact);
+    addressBook.push(newContact2)
+    console.log(addressBook.toString())
 } catch(e){
     console.error(e);
 }
