@@ -213,6 +213,53 @@ class AddressBook{
         console.log("Contacts in the Address Book sorted by their first names: ")
         console.log(sortedList.toString())
     }
+
+    //UC12
+    sortByCity(){
+        let sortedList = []
+        sortedList = this.addressBook.sort((a,b) => {
+            if(a.city < b.city){
+                return -1;
+            }
+            if(a.city > b.city){
+                return 1;
+            }
+            return 0;
+        });
+        console.log("Contacts in the Address Book sorted by their cities: ")
+        console.log(sortedList.toString())
+    }
+
+    sortByState(){
+        let sortedList = []
+        sortedList = this.addressBook.sort((a,b) => {
+            if(a.state < b.state){
+                return -1;
+            }
+            if(a.state > b.state){
+                return 1;
+            }
+            return 0;
+        });
+        console.log("Contacts in the Address Book sorted by their states: ")
+        console.log(sortedList.toString())
+    }
+
+    sortByZip(){
+        let sortedList = []
+        sortedList = this.addressBook.sort((a,b) => {
+            if(a.zip < b.zip){
+                return -1;
+            }
+            if(a.zip > b.zip){
+                return 1;
+            }
+            return 0;
+        });
+        console.log("Contacts in the Address Book sorted by their ZIP Codes: ")
+        console.log(sortedList.toString())
+    }
+
 }
 
 try{
@@ -221,17 +268,19 @@ try{
     let newAddressBook = new AddressBook(addressBook);
 
     //Implementing UC1 and UC2
-    let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
-    let newContact1 =new Contact("Brundha","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
+    let newContact = new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
+    let newContact1 = new Contact("Brundha","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
+    let newContact2 = new Contact("Malvika","Gowda","Gulpet","Chittor","Andhrapradesh",552412,915632478564,"malvika@gmail.com")
     newAddressBook.addContact(newContact)
     newAddressBook.addContact(newContact1)
+    newAddressBook.addContact(newContact2)
 
     //Implementing UC4
     newAddressBook.editContact("Sanjana","Srinivasa")
 
     //Implementing UC7
-    let newContact3 = new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
-    newAddressBook.addContact(newContact3)
+    let newContact4 = new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
+    newAddressBook.addContact(newContact4)
 
     //Implementing UC8 and UC9
     newAddressBook.searchByCity("Bengaluru")
@@ -243,6 +292,11 @@ try{
 
     //Implementing UC11
     newAddressBook.sortByName()
+
+    //Implementing UC12
+    newAddressBook.sortByCity()
+    newAddressBook.sortByState()
+    newAddressBook.sortByZip()
 
     //Implementing UC5
     newAddressBook.deleteContact("Brundha")
