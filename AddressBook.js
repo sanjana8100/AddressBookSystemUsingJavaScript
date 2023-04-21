@@ -106,47 +106,87 @@ class Contact{
     }
 }
 
-//UC3
-function addContact(){
-    let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
-    let newContact2 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
-    addressBook.push(newContact);
-    addressBook.push(newContact2)
-    console.log("Address Book after adding conatcts: ")
-    console.log(addressBook.toString())
+class AddressBook{
+    addressBook ;
+
+    constructor(addressBook){
+        this.addressBook = addressBook;
+    }
+
+    //UC3
+    addContact(contact){
+
+        //UC7
+        let status = false
+        for(let i=0 ; i < this.addressBook.length ; i++){
+            if(contact.firstName == this.addressBook[i].firstName){
+                status = true
+            }
+        } 
+        if(status){
+            console.log("Contact already exists in the Address Book")
+        } else {
+            this.addressBook.push(contact);
+        }
+        console.log("Address Book after adding conatcts: ")
+        console.log(this.addressBook.toString())
+    }
+
+    //UC4
+    editContact(name,newLastName){
+        for(let i=0 ; i < this.addressBook.length ; i++){
+            if(name == this.addressBook[i]._firstName){
+                this.addressBook[i].lastName = newLastName
+            }
+        }
+        console.log("Address Book after editng the last name using first name: ")
+        console.log(this.addressBook.toString())
+    }
+
+    //UC5
+    deleteContact(name){
+        for(let i=0 ; i < this.addressBook.length ; i++){
+            if(name == this.addressBook[i]._firstName){
+                delete this.addressBook[i]
+            }
+        }
+        console.log("Address Book after deleting the contact using first name: ")
+        console.log(this.addressBook.toString())    
+    }
+
+    //UC6
+    noOfContacts(){
+        let noOfContacts = this.addressBook.reduce((noOfContacts,contact) => {
+            return noOfContacts += 1
+        },0);
+        console.log("Number of Contacts in the Address Book: " +noOfContacts)
+        return noOfContacts;
+    }
 }
 
 try{
-    //UC3
-    let addressBook =[];
-    addContact();
+    //Implementing UC3
+    let addressBook = [];
+    let newAddressBook = new AddressBook(addressBook);
 
-    //UC4
-    let inputName = "Sanjana"
-    for(let i=0 ; i < addressBook.length ; i++){
-        if(inputName == addressBook[i]._firstName){
-            addressBook[i].lastName = "Srinivasa"
-        }
-    }
-    console.log("Address Book after editng the last name using first name: ")
-    console.log(addressBook.toString())
+    //Implementing UC1
+    let newContact =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
+    let newContact1 =new Contact("Swathi","Shetty","Indiranagar","Bengaluru","Karnataka",563102,918794575981,"swathi@gmail.com")
+    newAddressBook.addContact(newContact)
+    newAddressBook.addContact(newContact1)
 
-    //UC5
-    let name = "Swathi"
-    for(let i=0 ; i < addressBook.length ; i++){
-        if(name == addressBook[i]._firstName){
-            delete addressBook[i]
-        }
-    }
-    console.log("Address Book after deleting the contact using first name: ")
-    console.log(addressBook.toString())
+    //Implementing UC2
+    let newContact2 = new Contact("tim","Steward","Church Street","Goa","Goa",562489,918564723654,"tim@gmail.com")
+    newAddressBook.addContact(newContact2)
 
-    //UC6
-    let noOfContacts = addressBook.reduce((noOfContacts,contact) => {
-        return noOfContacts += 1
-    },0)
-    console.log("Number of Contacts in the Address Book: " +noOfContacts)
-    
+    newAddressBook.editContact("Sanjana","Srinivasa")
+
+    let newContact3 =new Contact("Sanjana","Guptha","Cottonpet","Bengaluru","Karnataka",563102,918794562371,"sanjana@gmail.com")
+    newAddressBook.addContact(newContact3)
+
+    newAddressBook.deleteContact("Swathi")
+
+    newAddressBook.noOfContacts();
 
 } catch(e){
     console.error(e);
